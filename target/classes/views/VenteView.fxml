@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.VenteController"
+      spacing="10" style="-fx-padding: 15;">
+
+    <Label text="Gestion des Ventes" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="15" VBox.vgrow="ALWAYS">
+
+        <VBox spacing="8" HBox.hgrow="ALWAYS">
+            <Label text="Ventes enregistrées" style="-fx-font-weight: bold;"/>
+            <TableView fx:id="tableVentes" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colVenteId"     text="ID"      prefWidth="50"/>
+                    <TableColumn fx:id="colVenteClient" text="Client"  prefWidth="160"/>
+                    <TableColumn fx:id="colVenteDate"   text="Date"    prefWidth="150"/>
+                    <TableColumn fx:id="colVenteTotal"  text="Total"   prefWidth="100"/>
+                </columns>
+            </TableView>
+            <Button text="Supprimer vente" onAction="#handleSupprimerVente"
+                    style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+        </VBox>
+
+        <VBox spacing="8" prefWidth="350">
+            <Label text="Nouvelle vente" style="-fx-font-weight: bold;"/>
+
+            <HBox spacing="8">
+                <Label text="Client :" minWidth="80"/>
+                <ComboBox fx:id="comboClient" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            </HBox>
+
+            <HBox spacing="8">
+                <Label text="Médicament :" minWidth="80"/>
+                <ComboBox fx:id="comboMedicament" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            </HBox>
+
+            <HBox spacing="8">
+                <Label text="Quantité :" minWidth="80"/>
+                <TextField fx:id="fieldQuantite" promptText="ex: 2" HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <Button text="+ Ajouter au panier" onAction="#handleAjouterAuPanier"
+                    style="-fx-background-color: #3498db; -fx-text-fill: white;" maxWidth="Infinity"/>
+
+            <Label text="Panier :" style="-fx-font-weight: bold;"/>
+            <TableView fx:id="tableDetails" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colDetailMedicament" text="Médicament" prefWidth="120"/>
+                    <TableColumn fx:id="colDetailQuantite"   text="Qté"        prefWidth="50"/>
+                    <TableColumn fx:id="colDetailPrix"       text="Prix unit."  prefWidth="80"/>
+                    <TableColumn fx:id="colDetailSousTotal"  text="Sous-total"  prefWidth="90"/>
+                </columns>
+            </TableView>
+
+            <Label fx:id="labelTotal" text="Total : 0.00 MAD"
+                   style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+            <HBox spacing="10">
+                <Button text="Vider panier"     onAction="#handleViderPanier"
+                        style="-fx-background-color: #e67e22; -fx-text-fill: white;" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                <Button text="Valider la vente" onAction="#handleValiderVente"
+                        style="-fx-background-color: #2ecc71; -fx-text-fill: white;" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            </HBox>
+        </VBox>
+
+    </HBox>
+
+    <Label fx:id="labelMessage"/>
+
+</VBox>

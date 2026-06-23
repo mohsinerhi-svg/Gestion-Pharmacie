@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.MedicamentController"
+      spacing="10" style="-fx-padding: 15;">
+
+    <Label text="Gestion des Médicaments" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10">
+        <TextField fx:id="fieldRecherche" promptText="Rechercher par nom..." HBox.hgrow="ALWAYS"/>
+        <Button text="Rechercher" onAction="#handleRechercher"/>
+        <Button text="Effacer" onAction="#handleEffacer"/>
+    </HBox>
+
+    <TableView fx:id="table" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colId"         text="ID"         prefWidth="50"/>
+            <TableColumn fx:id="colNom"        text="Nom"        prefWidth="180"/>
+            <TableColumn fx:id="colCategorie"  text="Catégorie"  prefWidth="130"/>
+            <TableColumn fx:id="colPrix"       text="Prix (MAD)" prefWidth="100"/>
+            <TableColumn fx:id="colStock"      text="Stock"      prefWidth="80"/>
+            <TableColumn fx:id="colExpiration" text="Expiration" prefWidth="120"/>
+        </columns>
+    </TableView>
+
+    <TitledPane text="Formulaire" expanded="true">
+        <GridPane hgap="10" vgap="8" style="-fx-padding: 10;">
+            <Label text="Nom :"          GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="fieldNom"  GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="220"/>
+
+            <Label text="Description :"         GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="fieldDescription" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Prix (MAD) :"   GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="fieldPrix" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <Label text="Stock :"          GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <TextField fx:id="fieldStock"  GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+            <Label text="Expiration :"          GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <DatePicker fx:id="fieldExpiration" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+            <Label text="Catégorie :"         GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+            <TextField fx:id="fieldCategorie" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+        </GridPane>
+    </TitledPane>
+
+    <HBox spacing="10">
+        <Button text="Ajouter"    onAction="#handleAjouter"    style="-fx-background-color: #2ecc71; -fx-text-fill: white;"/>
+        <Button text="Modifier"   onAction="#handleModifier"   style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+        <Button text="Supprimer"  onAction="#handleSupprimer"  style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+    </HBox>
+
+    <Label fx:id="labelMessage"/>
+
+</VBox>
